@@ -12,6 +12,11 @@ red   = (255, 0, 0)
 purple  = (255, 0, 255)
 yellow = (255, 255, 0)
 
+#timer variables
+clock = pygame.time.Clock()
+counter, timer_text = 60, '60'.rjust(3)
+pygame.time.set_timer(pygame.USEREVENT, 1000)
+timer_font = pygame.font.SysFont('Consolas', 30)
 
 # Screen Dimensions
 height = 600
@@ -28,7 +33,7 @@ font2 = pygame.font.SysFont ('Arial',35)
 
 
 # introduction text
-Header  = font1.render ('Play Cherades!', True, black)
+Header  = font1.render ('Play Charades!', True, black)
 Directions = font2.render ('Act Out Your Given Word', True, black)
 
 # buttons 
@@ -72,6 +77,9 @@ while running:
     displayRandWord = font1.render (getResponse , True , yellow)
     
     for event in pygame.event.get():
+        if event.type == pygame.USEREVENT: 
+            counter -= 1
+            timer_text = str(counter).rjust(3) if counter > 0 else 'Time is up!'
         if event.type == pygame.QUIT:
             running = False
             
@@ -84,6 +92,12 @@ while running:
             # next button press
             if 200 <= mouse [0] <= 250 and 300 <= mouse [1] <= 350:
                 randWord = pip._vendor.requests.get ("https://random-word-api.herokuapp.com/word?number=1");
+    GameScreen.fill((255, 255, 255))
+    GameScreen.blit (Header , (width/2-175, height/2-175))
+    GameScreen.blit (Directions , (width/2-185, height/2-125))
+    GameScreen.blit(timer_font.render(timer_text, True, (0, 0, 0)), (32, 48))
+    pygame.display.flip()
+    clock.tick(60)
             
 #Display Random Word
 GameScreen.blit (displayRandWord, (width/2, height/2))
