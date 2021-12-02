@@ -96,6 +96,8 @@ while running:
     GameScreen.blit (Header , (width/2-175, height/2-175))
     GameScreen.blit (Directions , (width/2-185, height/2-125))
     GameScreen.blit(timer_font.render(timer_text, True, (0, 0, 0)), (32, 48))
+    GameScreen.blit (quit , (width/2-50, height/2+100))
+    GameScreen.blit (nextWord , (width/2+50, height/2+100))
     pygame.display.flip()
     clock.tick(60)
             
