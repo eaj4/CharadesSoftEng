@@ -34,11 +34,7 @@ Directions = font2.render ('Act Out Your Given Word', True, black)
 
 
 
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+
 
 
 
@@ -53,3 +49,9 @@ GameScreen.blit (Directions , (width/2-185, height/2-125))
     
   
 pygame.display.update ()
+
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
