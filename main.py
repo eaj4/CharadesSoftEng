@@ -59,7 +59,7 @@ GameScreen.blit (quit , (width/2-50, height/2+100))
 GameScreen.blit (nextWord , (width/2+50, height/2+100))
 
 #actual Charades word
-GameScreen.blit (RandWord, (width/2, height/2))
+GameScreen.blit (randWord, (width/2, height/2))
     
 
     
