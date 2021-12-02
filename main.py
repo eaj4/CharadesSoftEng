@@ -69,7 +69,7 @@ running = True
 while running:
     getResponse = json.loads (randWord.text)
     getResponse = json.dumps (getResponse)
-    displayRandWord = font1.render (getResponse , True , Yellow)
+    displayRandWord = font1.render (getResponse , True , yellow)
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
