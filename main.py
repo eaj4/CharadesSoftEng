@@ -9,7 +9,9 @@ pygame.init()
 black = (0, 0, 0)
 white = (255, 255, 255)
 red   = (255, 0, 0)
+lightRed   = (255, 204, 203)
 purple  = (255, 0, 255)
+lightPurple  = (193, 153, 190)
 yellow = (255, 255, 0)
 
 #timer variables
@@ -54,17 +56,23 @@ mouse = pygame.mouse.get_pos ()
 GameScreen.fill (white)
 
 #Display gamescreen messages
-GameScreen.blit (Header , (width/2-175, height/2-175))
+GameScreen.blit (Header , (width/2-150, height/2-175))
 GameScreen.blit (Directions , (width/2-185, height/2-125))
 
 #create quit button
-GameScreen.blit (quit , (width/2-50, height/2+100))
+pygame.draw.rect(GameScreen,lightRed,[width/2-125, height/2+100,80,40])
+GameScreen.blit (quit , (width/2-125, height/2+100))
    
 #create next button
-GameScreen.blit (nextWord , (width/2+50, height/2+100))
+pygame.draw.rect(GameScreen,lightPurple,[width/2+25, height/2+100,85,40])
+GameScreen.blit (nextWord , (width/2+25, height/2+100))
 
 
-    
+getResponse = json.loads (randWord.text)
+getResponse = json.dumps (getResponse)
+displayRandWord = font1.render (getResponse , True , yellow)  
+#Display Random Word
+GameScreen.blit (displayRandWord, (width/2-115, height/2-25))    
 
     
   
@@ -83,15 +91,19 @@ while running:
         if event.type == pygame.QUIT:
             running = False
             
+
     # mouse click check
         if event.type == pygame.MOUSEBUTTONDOWN:
             # Quit button press
-            if 100 <= mouse [0] <= 150 and 300 <= mouse [1] <= 350:
+            if 125 <= mouse [0] <= 205 and 400 <= mouse [1] <= 440:
                 pygame.quit ()
            
             # next button press
             if 200 <= mouse [0] <= 250 and 300 <= mouse [1] <= 350:
                 randWord = pip._vendor.requests.get ("https://random-word-api.herokuapp.com/word?number=1");
+                  
+                  
+                  
     GameScreen.fill((255, 255, 255))
     GameScreen.blit (Header , (width/2-175, height/2-175))
     GameScreen.blit (Directions , (width/2-185, height/2-125))
@@ -101,5 +113,3 @@ while running:
     pygame.display.flip()
     clock.tick(60)
             
-#Display Random Word
-GameScreen.blit (displayRandWord, (width/2, height/2))
