@@ -76,7 +76,7 @@ while running:
             running = False
             
     # mouse click check
-        if ev.type == pygame.MOUSEBUTTONDOWN:
+        if event.type == pygame.MOUSEBUTTONDOWN:
             # Quit button press
             if 100 <= mouse [0] <= 150 and 300 <= mouse [1] <= 350:
                 pygame.quit ()
