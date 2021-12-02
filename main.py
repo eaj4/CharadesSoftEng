@@ -38,13 +38,13 @@ Directions = font2.render ('Act Out Your Given Word', True, black)
 
 
 # Set screen color 
-screen.fill (white)
+GameScreen.fill (white)
 
 
     
 #Display gamescreen messages
-screen.blit (Header , (width/2-175, height/2-175))
-screen.blit (Directions , (width/2-185, height/2-125))
+GameScreen.blit (Header , (width/2-175, height/2-175))
+GameScreen.blit (Directions , (width/2-185, height/2-125))
     
   
 pygame.display.update ()
