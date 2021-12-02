@@ -13,6 +13,7 @@ lightRed   = (255, 204, 203)
 purple  = (255, 0, 255)
 lightPurple  = (193, 153, 190)
 yellow = (255, 255, 0)
+blue = (0, 0, 255)
 
 #timer variables
 clock = pygame.time.Clock()
@@ -64,7 +65,7 @@ running = True
 while running:
     getResponse = json.loads (randWord.text)
     getResponse = json.dumps (getResponse)
-    displayRandWord = font1.render (getResponse , True , yellow)
+    displayRandWord = font1.render (getResponse , True , blue)
     
     for event in pygame.event.get():
         if event.type == pygame.USEREVENT: 
