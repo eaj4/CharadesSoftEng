@@ -47,14 +47,6 @@ quit = font2.render ('QUIT' , True , red)
 randWord = pip._vendor.requests.get ("https://random-word-api.herokuapp.com/word?number=1");
 
 
-
-
-
-
-
- 
-   
-
     
   
 pygame.display.update ()
@@ -92,8 +84,10 @@ while running:
     # Set screen color 
     GameScreen.fill (white)
 
+    #clock
     GameScreen.blit(timer_font.render(timer_text, True, (0, 0, 0)), (32, 48))
     clock.tick(60)
+    
     #Display gamescreen messages
     GameScreen.blit (Header , (width/2-150, height/2-175))
     GameScreen.blit (Directions , (width/2-185, height/2-125))
