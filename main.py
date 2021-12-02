@@ -53,13 +53,13 @@ GameScreen.blit (Header , (width/2-175, height/2-175))
 GameScreen.blit (Directions , (width/2-185, height/2-125))
 
 #create quit button
-gameScreen.blit (quit , (width/2-50, height/2+100))
+GameScreen.blit (quit , (width/2-50, height/2+100))
    
 #create next button
-gameScreen.blit (nextWord , (width/2+50, height/2+100))
+GameScreen.blit (nextWord , (width/2+50, height/2+100))
 
 #actual Charades word
-gameScreen.blit (RandWord, (width/2, height/2))
+GameScreen.blit (RandWord, (width/2, height/2))
     
 
     
