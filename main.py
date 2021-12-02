@@ -58,8 +58,7 @@ GameScreen.blit (quit , (width/2-50, height/2+100))
 #create next button
 GameScreen.blit (nextWord , (width/2+50, height/2+100))
 
-#Display Random Word
-GameScreen.blit (displayRandWord, (width/2, height/2))
+
     
 
     
@@ -86,3 +85,5 @@ while running:
             if 200 <= mouse [0] <= 250 and 300 <= mouse [1] <= 350:
                 randWord = pip._vendor.requests.get ("https://random-word-api.herokuapp.com/word?number=1");
             
+#Display Random Word
+GameScreen.blit (displayRandWord, (width/2, height/2))
