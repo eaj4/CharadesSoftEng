@@ -58,8 +58,8 @@ GameScreen.blit (quit , (width/2-50, height/2+100))
 #create next button
 GameScreen.blit (nextWord , (width/2+50, height/2+100))
 
-#actual Charades word
-GameScreen.blit (randWord, (width/2, height/2))
+#Display Random Word
+GameScreen.blit (displayRandWord, (width/2, height/2))
     
 
     
