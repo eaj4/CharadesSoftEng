@@ -22,7 +22,7 @@ timer_font = pygame.font.SysFont('Consolas', 30)
 
 # Screen Dimensions
 height = 600
-width  = 400
+width  = 500
 
 
 # GUI Setup
@@ -30,8 +30,8 @@ GameScreen = pygame.display.set_mode ((width, height))
 pygame.display.set_caption ('Charades!!!')
 
 # Set GameScreen Fonts 
-font1 = pygame.font.Font ('freesansbold.ttf', 32)
-font2 = pygame.font.SysFont ('Arial',35)
+font1 = pygame.font.Font ('freesansbold.ttf', 40)
+font2 = pygame.font.SysFont ('Arial',32)
 
 
 # introduction text
@@ -52,27 +52,9 @@ randWord = pip._vendor.requests.get ("https://random-word-api.herokuapp.com/word
 mouse = pygame.mouse.get_pos ()
 
 
-# Set screen color 
-GameScreen.fill (white)
 
-#Display gamescreen messages
-GameScreen.blit (Header , (width/2-150, height/2-175))
-GameScreen.blit (Directions , (width/2-185, height/2-125))
-
-#create quit button
-pygame.draw.rect(GameScreen,lightRed,[width/2-125, height/2+100,80,40])
-GameScreen.blit (quit , (width/2-125, height/2+100))
+ 
    
-#create next button
-pygame.draw.rect(GameScreen,lightPurple,[width/2+25, height/2+100,85,40])
-GameScreen.blit (nextWord , (width/2+25, height/2+100))
-
-
-getResponse = json.loads (randWord.text)
-getResponse = json.dumps (getResponse)
-displayRandWord = font1.render (getResponse , True , yellow)  
-#Display Random Word
-GameScreen.blit (displayRandWord, (width/2-115, height/2-25))    
 
     
   
@@ -104,12 +86,27 @@ while running:
                   
                   
                   
-    GameScreen.fill((255, 255, 255))
-    GameScreen.blit (Header , (width/2-175, height/2-175))
-    GameScreen.blit (Directions , (width/2-185, height/2-125))
+    # Set screen color 
+    GameScreen.fill (white)
+
     GameScreen.blit(timer_font.render(timer_text, True, (0, 0, 0)), (32, 48))
-    GameScreen.blit (quit , (width/2-50, height/2+100))
-    GameScreen.blit (nextWord , (width/2+50, height/2+100))
-    pygame.display.flip()
     clock.tick(60)
-            
+    #Display gamescreen messages
+    GameScreen.blit (Header , (width/2-150, height/2-175))
+    GameScreen.blit (Directions , (width/2-185, height/2-125))
+
+    #create quit button
+    pygame.draw.rect(GameScreen,lightRed,[width/2-125, height/2+100,80,40])
+    GameScreen.blit (quit , (width/2-125, height/2+100))
+   
+    #create next button
+    pygame.draw.rect(GameScreen,lightPurple,[width/2+25, height/2+100,85,40])
+    GameScreen.blit (nextWord , (width/2+25, height/2+100))
+
+    #Display Random Word
+    getResponse = json.loads (randWord.text)
+    getResponse = json.dumps (getResponse)
+    displayRandWord = font1.render (getResponse , True , yellow) 
+    GameScreen.blit (displayRandWord, (width/2-115, height/2-25)) 
+
+    pygame.display.flip()
