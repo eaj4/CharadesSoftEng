@@ -107,7 +107,7 @@ while running:
     #Display Random Word
     getResponse = json.loads (randWord.text)
     getResponse = json.dumps (getResponse)
-    displayRandWord = font1.render (getResponse , True , yellow) 
+    displayRandWord = font1.render (getResponse , True , blue) 
     GameScreen.blit (displayRandWord, (width/2-115, height/2-25)) 
 
     pygame.display.flip()
