@@ -13,7 +13,6 @@ lightRed   = (255, 204, 203)
 purple  = (255, 0, 255)
 lightPurple  = (193, 153, 190)
 yellow = (255, 255, 0)
-blue = (0, 0, 255)
 
 #timer variables
 clock = pygame.time.Clock()
@@ -49,8 +48,7 @@ randWord = pip._vendor.requests.get ("https://random-word-api.herokuapp.com/word
 
 
 
-# Get mouse Position
-mouse = pygame.mouse.get_pos ()
+
 
 
 
@@ -65,7 +63,10 @@ running = True
 while running:
     getResponse = json.loads (randWord.text)
     getResponse = json.dumps (getResponse)
-    displayRandWord = font1.render (getResponse , True , blue)
+    displayRandWord = font1.render (getResponse , True , yellow)
+
+    # Get mouse Position
+    mouse = pygame.mouse.get_pos ()
     
     for event in pygame.event.get():
         if event.type == pygame.USEREVENT: 
@@ -73,6 +74,7 @@ while running:
             timer_text = str(counter).rjust(3) if counter > 0 else 'Time is up!'
         if event.type == pygame.QUIT:
             running = False
+
             
 
     # mouse click check
@@ -82,7 +84,7 @@ while running:
                 pygame.quit ()
            
             # next button press
-            if 200 <= mouse [0] <= 250 and 300 <= mouse [1] <= 350:
+            if 275 <= mouse [0] <= 360 and 400 <= mouse [1] <= 440:
                 randWord = pip._vendor.requests.get ("https://random-word-api.herokuapp.com/word?number=1");
                   
                   
@@ -107,7 +109,7 @@ while running:
     #Display Random Word
     getResponse = json.loads (randWord.text)
     getResponse = json.dumps (getResponse)
-    displayRandWord = font1.render (getResponse , True , blue) 
+    displayRandWord = font1.render (getResponse , True , yellow) 
     GameScreen.blit (displayRandWord, (width/2-115, height/2-25)) 
 
     pygame.display.flip()
