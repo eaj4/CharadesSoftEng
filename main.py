@@ -12,9 +12,8 @@ red   = (255, 0, 0)
 lightRed   = (255, 204, 203)
 purple  = (255, 0, 255)
 lightPurple  = (193, 153, 190)
-yellow = (255, 255, 0)
 blue = (0, 0, 255)
-green = (0, 255, 0)
+lightBlue = (173, 216, 230)
 
 #timer variables
 clock = pygame.time.Clock()
@@ -49,23 +48,9 @@ score= font2.render('Score', True, blue )
 # Return 1 word from random word generator
 randWord = pip._vendor.requests.get ("https://random-word-api.herokuapp.com/word?number=1");
 
+# Initialize score to 0
 scoreCt = 0
 
-#Create Text used for score
-text = font2.render("Score = "+ str(scoreCt), True, green)
-
-def WritescoreCt(screen, score):
-    GameScreen.blit(text, (height/2-50, width/3))
-
-
-displayScore = font1.render ("Score = "+ str(scoreCt), True , blue)
-
-
-
- 
-   
-
-    
   
 pygame.display.update ()
 
@@ -75,6 +60,8 @@ while running:
     getResponse = json.loads (randWord.text)
     getResponse = json.dumps (getResponse)
     displayRandWord = font1.render (getResponse , True , blue)
+    displayScore = font1.render ("Score = "+ str (scoreCt), True , blue)
+
 
     # Get mouse Position
     mouse = pygame.mouse.get_pos ()
@@ -87,7 +74,6 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-            
 
     # mouse click check
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -99,21 +85,18 @@ while running:
             if 275 <= mouse [0] <= 360 and 400 <= mouse [1] <= 440:
                 randWord = pip._vendor.requests.get ("https://random-word-api.herokuapp.com/word?number=1");
 
-            #score button pressed
-            if 200 <= mouse [0] <= 300 and 375 <= mouse [1] <= 425:
+            # score button pressed
+            if 180 <= mouse [0] <= 290 and 450 <= mouse [1] <= 490:
                  scoreCt=scoreCt+1 
-                 WritescoreCt(GameScreen, scoreCt)
-                
-                 
 
-                 
-                 
                   
     # Set screen color 
     GameScreen.fill (white)
 
+    # Clock Setup
     GameScreen.blit(timer_font.render(timer_text, True, (0, 0, 0)), (32, 48))
     clock.tick(60)
+
     #Display gamescreen messages
     GameScreen.blit (Header , (width/2-150, height/2-175))
     GameScreen.blit (Directions , (width/2-185, height/2-125))
@@ -127,19 +110,14 @@ while running:
     GameScreen.blit (nextWord , (width/2+25, height/2+100))
 
     #Create Score button
-    pygame.draw.rect(GameScreen,lightPurple,[width/2-50, height/2+150,85,40])
-    GameScreen.blit(score,[width/2-50, height/2+150,85,40]  )
-   # GameScreen.blit (displayScore, (width/2-70, height/3+10))
+    pygame.draw.rect(GameScreen,lightBlue,[width/2-70, height/2+150,110,40])
+    GameScreen.blit (displayScore , (width/2-70, height/2+150))
 
  
-
     #Display Random Word
-    getResponse = json.loads (randWord.text)
-    getResponse = json.dumps (getResponse)
-    displayRandWord = font1.render (getResponse , True , blue) 
     GameScreen.blit (displayRandWord, (width/2-115, height/2-25)) 
 
 
-
     pygame.display.flip()
+
 
