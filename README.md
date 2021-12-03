@@ -5,3 +5,8 @@ This is a charades game for our Software Engineering Class. This program uses AP
 
 To run:
 Run the main.py file in Python (make sure pygame is installed too)
+
+Play instructions: 
+1. Game starts on build. Act out the words by the end of the timer.
+2. If the word is unguessable, press skip.
+3. If the word is guessed correctly, press "score" and then "next"
