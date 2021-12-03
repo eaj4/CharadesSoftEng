@@ -83,6 +83,7 @@ while running:
         if event.type == pygame.USEREVENT: 
             counter -= 1
             timer_text = str(counter).rjust(3) if counter > 0 else 'Time is up!'
+
         if event.type == pygame.QUIT:
             running = False
 
@@ -99,13 +100,14 @@ while running:
                 randWord = pip._vendor.requests.get ("https://random-word-api.herokuapp.com/word?number=1");
 
             #score button pressed
-            if 275 <= mouse [0] <= 360 and 400 <= mouse [1] <= 440:
-                 scoreCt+=1 
+            if 200 <= mouse [0] <= 300 and 375 <= mouse [1] <= 425:
+                 scoreCt=scoreCt+1 
+                 WritescoreCt(GameScreen, scoreCt)
+                
                  
 
                  
                  
-                  
                   
     # Set screen color 
     GameScreen.fill (white)
@@ -127,6 +129,7 @@ while running:
     #Create Score button
     pygame.draw.rect(GameScreen,lightPurple,[width/2-50, height/2+150,85,40])
     GameScreen.blit(score,[width/2-50, height/2+150,85,40]  )
+   # GameScreen.blit (displayScore, (width/2-70, height/3+10))
 
  
 
@@ -135,8 +138,8 @@ while running:
     getResponse = json.dumps (getResponse)
     displayRandWord = font1.render (getResponse , True , blue) 
     GameScreen.blit (displayRandWord, (width/2-115, height/2-25)) 
-    GameScreen.blit (displayScore, (width/2-50, height/3))
 
 
 
     pygame.display.flip()
+
